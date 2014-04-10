@@ -39,8 +39,9 @@
   <title>hexo中$\LaTeX$公式及代碼插入實現 | Smile</title>
   <meta name="author" content="止水">
   
-  <meta name="description" content="搞理工科的人的博客裏，最重要的可能就是數學公式和源代碼了；至少，我就爲在網頁中插入這兩樣東西折騰過。因爲對前端基本不瞭解，用別人的插件時自然感到茫然；面對wordpress這樣的龐然大物，只能慷慨悲歌了。
-在把wordpress變得越來越臃腫，功能越來越強的同時，穩定性差的問題也無從解決了。在不斷地">
+  <meta name="description" content="搞理工科的人的博客裏，最重要的可能就是數學公式和源代碼了；至少，我就爲在網頁中插入這兩樣東西折騰過。因爲對前端基本不瞭解，用別人的插件時自然感到茫然。
+在把wordpress變得越來越臃腫，功能越來越強的同時，穩定性差的問題也出現了。在不斷地折騰插件和主題倍感疲憊之餘，發現自己偏離了初衷。
+轉向he">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -93,9 +94,9 @@
     </header>
     <div class="entry">
       
-        <p>搞理工科的人的博客裏，最重要的可能就是數學公式和源代碼了；至少，我就爲在網頁中插入這兩樣東西折騰過。因爲對前端基本不瞭解，用別人的插件時自然感到茫然；面對wordpress這樣的龐然大物，只能慷慨悲歌了。</p>
-<p>在把wordpress變得越來越臃腫，功能越來越強的同時，穩定性差的問題也無從解決了。在不斷地折騰插件和主題倍感疲憊之餘，發現自己偏離了初衷。</p>
-<p>轉向hexo，完全是因爲“據說”這是一個輕量級的靜態博客。對沒玩兒過的東西，終究還是很好奇，就預謀已久，搭建了一個。確實沒想到，hexo的$\LaTeX$公式和代碼插入實現起來簡直太方便了。以至於網上已有多位博主介紹了實現方法，我仍在此畫蛇添足記錄一番，主要是實現太過方便而我擔心因此忘記。</p>
+        <p>搞理工科的人的博客裏，最重要的可能就是數學公式和源代碼了；至少，我就爲在網頁中插入這兩樣東西折騰過。因爲對前端基本不瞭解，用別人的插件時自然感到茫然。</p>
+<p>在把wordpress變得越來越臃腫，功能越來越強的同時，穩定性差的問題也出現了。在不斷地折騰插件和主題倍感疲憊之餘，發現自己偏離了初衷。</p>
+<p>轉向hexo，完全是因爲“據說”這是一個輕量級的靜態博客。對沒玩兒過的東西，終究還是很好奇，預謀了很久，終於還是搭建了一個。確實沒想到的是，hexo的$\LaTeX$公式和代碼插入實現起來簡直太方便了。以至於網上已有多位博主介紹了實現方法，我仍在此畫蛇添足記錄一番，主要是實現起來太過順利而我擔心因此忘記。</p>
 <h1 id="$\LaTeX$公式實現">$\LaTeX$公式實現</h1>
 <p>$\LaTeX$公式實現當然還是用mathjax引擎，方法如下：</p>
 <ol>
@@ -193,11 +194,8 @@
 </li>
 </ol>
 <h1 id="代碼插入實現">代碼插入實現</h1>
-<p>這根本就是markdown自帶語法就可以完成的了。</p>
-<pre><code><span class="escape">``</span><span class="escape">`l</span>anguagetype
-    ...
-<span class="escape">``</span><span class="escape">` </span>   
-</code></pre>
+<p>這根本就是markdown自帶<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">語法</a>就可以完成的了。</p>
+
       
     </div>
     <footer>
@@ -271,8 +269,6 @@
   <ul class="entry">
   
     <li><a href="/tags/latex/">latex</a><small>1</small></li>
-  
-    <li><a href="/tags/test/">test</a><small>1</small></li>
   
   </ul>
 </div>
