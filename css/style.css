@@ -292,15 +292,17 @@ article .entry .video-container {
   margin-top: 15px;
 }
 article .entry blockquote {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  #border-top: 1px solid #ddd;
+  #border-bottom: 1px solid #ddd;
   border: 1px solid #ddd
   background: #e0eeee
   font-style: normal;
   font-family: "Georgia", serif;
-  font-size: 1.2em;
+  font-size: 1.0em;
   padding: 0 30px 15px;
   text-align: left;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
 }
 article .entry blockquote footer {
   border-top: none;
