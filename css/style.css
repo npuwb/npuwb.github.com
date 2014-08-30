@@ -300,6 +300,7 @@ article .entry blockquote {
   font-family: "Georgia", serif;
   font-size: 1.0em;
   padding: 0 30px 15px;
+  margin: 0
   text-align: left;
   -webkit-border-radius: 3px;
   border-radius: 3px;
