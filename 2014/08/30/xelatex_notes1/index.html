@@ -1,0 +1,424 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+  <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <meta charset="utf-8">
+  
+  <title>XeLaTeX備忘錄 | Smile</title>
+  <meta name="author" content="止水">
+  
+  <meta name="description" content="[TOC]
+這是一份我學習$\LaTeX$的備忘錄。下面行文過程中$\LaTeX$均簡寫為LaTeX。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="XeLaTeX備忘錄"/>
+  <meta property="og:site_name" content="Smile"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Smile" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Smile</a></h1>
+  <h2><a href="/">Let life be beautiful like summer flowers and death like autumn leaves.</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-30T14:48:31.000Z"><a href="/2014/08/30/xelatex_notes1/">Aug 30 2014</a></time>
+      
+      
+  
+    <h1 class="title">XeLaTeX備忘錄</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>[TOC]</p>
+<p>這是一份我學習<a href="http://zh.wikipedia.org/zh-tw/LaTeX" target="_blank">$\LaTeX$</a>的備忘錄。下面行文過程中$\LaTeX$均簡寫為LaTeX。</p>
+<a id="more"></a>
+
+<h1 id="LaTeX的字體">LaTeX的字體</h1>
+<p>LaTeX的字體大小從小到大依次是</p>
+<p><code>tiny</code>， <code>scriptsize</code>， <code>footnotesize</code>， <code>small</code>， <code>normalsize</code>， <code>large</code>， <code>Large</code>， <code>LARGE</code>， <code>huge</code>， <code>Huge</code>。</p>
+<h1 id="LaTeX插圖">LaTeX插圖</h1>
+<p>LaTeX中一般只支持插入<strong>eps</strong>（Encapsulated PostScript）格式的圖片。</p>
+<p>在LaTeX中插入圖片一般是通過圖形處理宏命令實現的，例如使用<code>includegraphics</code>宏命令（<code>graphicx</code>包），首先需在latex文档的導言區加上:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\usepackage<span class="list">{graphicx}</span>
+</pre></td></tr></table></figure>
+
+<p>插入圖片語句如下:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\includegraphics[<span class="link_label">height=高度</span>][<span class="link_reference">angle=旋轉角度</span>]{圖片文件名}
+</pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\includegraphics[<span class="link_label">width=寬度</span>][<span class="link_reference">angle=旋轉角度</span>]{圖片文件名}
+</pre></td></tr></table></figure>
+
+<p>其中的”高度”和”宽度”是指希望图片打印的高度和宽度, 必须给出单位, 可用厘米(cm)或英寸(in). 高度和宽度也可用上述格式同时给出, 这样可以改变原图的长宽比例. 上述命令中的图片文件名是指欲插入的图片文件的文件名, 图片必需是<strong>eps</strong>格式的.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>\<span class="keyword">begin</span>{figure}[<span class="constant">H</span>]
+\centering
+\includegraphics[width=<span class="number">0</span>.<span class="number">7</span>textwidth]{cl&cd.eps}
+\caption{<span class="variable">$c_l</span><span class="variable">$ </span>& <span class="variable">$c_d</span><span class="variable">$ </span>- <span class="variable">$\</span>alpha<span class="variable">$}</span>
+\label{<span class="symbol">fig:</span>cl&cd}
+\<span class="keyword">end</span>{figure}
+</pre></td></tr></table></figure>
+
+<p>插子图使用<code>subfigure</code>宏包，在导言区加入</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>\usepackage<span class="list">{subfigure}</span>
+</pre></td></tr></table></figure>
+
+<h2 id="横排插子图">横排插子图</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre>%横排插图
+\<span class="keyword">begin</span>{figure}[<span class="constant">H</span>]
+\centering
+\subfigure[<span class="variable">$c_l</span><span class="variable">$ </span>& <span class="variable">$c_d</span><span class="variable">$ </span>- <span class="variable">$\</span>alpha<span class="variable">$]</span>{
+    \<span class="keyword">begin</span>{minipage}[b]{<span class="number">0</span>.<span class="number">45</span>textwidth}
+    \includegraphics[width=<span class="number">1</span>textwidth]{cl&cd.eps}
+    \<span class="keyword">end</span>{minipage}
+}
+\subfigure[<span class="variable">$c_d</span><span class="variable">$ </span>- <span class="variable">$\</span>alpha<span class="variable">$]</span>{
+    \<span class="keyword">begin</span>{minipage}[b]{<span class="number">0</span>.<span class="number">45</span>textwidth}
+    \includegraphics[width=<span class="number">1</span>textwidth]{cdCompare.eps}
+    \<span class="keyword">end</span>{minipage}
+}
+\caption{hei 计算结果}
+\label{<span class="symbol">fig:</span>result}
+\<span class="keyword">end</span>{figure}
+</pre></td></tr></table></figure>
+
+<h2 id="纵排插子图">纵排插子图</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre>%竖排插图
+\<span class="keyword">begin</span>{figure}
+\centering
+\subfigure[<span class="constant">Small</span> <span class="constant">Box</span> with a <span class="constant">Long</span> <span class="constant">Caption</span>]{
+    \label{<span class="symbol">fig:</span>cl&cd} <span class="string">%% label for first subfigure
+    \includegraphics[width=0.5textwidth]{cl&cd.eps}
+}
+\hspace{1in}
+\subfigure[Big Box]{
+    \label{fig:cdCompare} %</span>% label <span class="keyword">for</span> second subfigure
+    \includegraphics[width=<span class="number">0</span>.<span class="number">5</span>textwidth]{cdCompare.eps}
+}
+\caption{<span class="constant">Two</span> <span class="constant">Subfigures</span>}
+\label{<span class="symbol">fig:</span>result} <span class="string">%% label for entire figure
+\end{figure}</span>
+</pre></td></tr></table></figure>
+
+<h1 id="LaTeX_article（確切的說是ctexart）的附錄">LaTeX article（確切的說是ctexart）的附錄</h1>
+<p>使用<code>appendix</code>宏包，在导言区加入<code>\usepackage{appendix}</code>，在頁面中加入</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="command">\newpage</span>
+<span class="command">\appendix</span>
+<span class="command">\CTEXsetup</span><span class="special">[</span>name=<span class="special">{</span>附录,<span class="special">}</span><span class="special">]</span><span class="special">{</span>section<span class="special">}</span>    <span class="comment">%參考ctex手冊</span>
+<span class="comment">%appendixpage</span>
+<span class="command">\section</span><span class="special">{</span>翼型几何外形<span class="special">}</span>
+<span class="command">\newpage</span>
+<span class="command">\section</span><span class="special">{</span>C程序源代码<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<h1 id="LaTeX參考文獻">LaTeX參考文獻</h1>
+<p>使用<code>bibtex</code>和<code>natbib</code>宏包，在導言區加入<br><code>\usepackage[sort&amp;compress, sectionbib, super]{natbib}</code>。<br>在頁面中加入</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="command">\newpage</span>
+<span class="command">\bibliographystyle</span><span class="special">{</span>plainnat<span class="special">}</span>
+<span class="command">\clearpage</span>
+<span class="command">\phantomsection</span>
+<span class="command">\addcontentsline</span><span class="special">{</span>toc<span class="special">}</span><span class="special">{</span>section<span class="special">}</span><span class="special">{</span>参考文献<span class="special">}</span>
+<span class="command">\bibliography</span><span class="special">{</span>myref<span class="special">}</span>
+</pre></td></tr></table></figure>
+
+<p>以上寫法參考了下面兩篇文章，在此引用過來。</p>
+<blockquote>
+<p><a href="http://blog.sina.com.cn/s/blog_5e16f1770100grkq.html" target="_blank"><strong>LaTeX技巧196：addcontentsline的妙用</strong></a><br>如果我们想<strong>把一些非章节的部分加入目录</strong>，我们会用到如上命令，<code>\addcontentsline{toc}{chapter}{参考文献}</code><br>或者<code>\addcontentsline{toc}{section}{参考文献}</code>。<br>岂不妙哉！</p>
+<p><a href="http://blog.sina.com.cn/s/blog_5e16f1770100mve0.html" target="_blank"><strong>LaTeX技巧420：手工加入的目录项页码错误，生成的书签链接也不对，怎么回事？</strong></a><br>这是因为<code>\addcontentsline</code>命令<strong>后面的命令换页造成的页码不一致</strong>。需要在<strong><code>\addcontentsline</code>命令之前</strong>加上<br><code>\clearpage</code><br>如果是<code>book</code>类或者用了<code>openright</code>参数的<code>report</code>类文档，新的章总是从奇数页开始，则要把命令改成<br><code>\cleardoublepage</code><br>如果使用了<code>hyperref</code>宏包来生成PDF文件的书签链接，则还需要在上面的命令后再加上<br><code>\phantomsection</code><br>选自：《CTeX-FAQ》</p>
+</blockquote>
+<p>使用<code>BiBtex</code>宏需要另寫一個<strong>myref.bib</strong>文件，用來錄入文獻信息，文件內容形式如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="variable">@book</span>{<span class="constant">Rowling</span>,
+author = <span class="string">"Joanne K. Rowling"</span>,
+title = <span class="string">"Harry Potter and the Sorcerer's Stone"</span>,
+publisher = <span class="string">"Bloomsbury , London"</span>,
+year = <span class="string">"1997"</span>
+}
+<span class="variable">@book</span>{blablabla,
+author = <span class="string">"鬥酒僧"</span>,
+title = <span class="string">"九陽真經"</span>,
+publisher = <span class="string">"不詳"</span>,
+year = <span class="string">"看過九陰真經之後"</span>
+}
+</pre></td></tr></table></figure>
+
+<p>編譯時共編譯4遍，順序為<code>xelatex→bibtex→xelatex→xelatex</code>。</p>
+<p><strong>注</strong>：</p>
+<ol>
+<li>文獻名稱（Harry Potter and the Sorcerer’s Stone）直接在文檔中使用<code>\cite{Rowling}</code>引用，如果不引用該文獻的話，即便在myref.bib文件中錄入了該文獻信息，羅林阿姨的書也是不會在“參考文獻”章節中顯示出來的。</li>
+<li>始終沒能成功實現上標方括號引用，按照網上的說法，是在導言區添加<code>\usepackage[sort&amp;compress, sectionbib, super, square]{natbib}</code>，使用<code>\citep{label}</code>引用即可；不過我按此做法沒有成功，效果是數字上標了，但方括號仍然是正常的文本樣式，在此作一記錄，過段時間再試。</li>
+</ol>
+<blockquote>
+<p>這篇筆記原寫於2013年11月2日，轉自我的另一個<a href="http://weibin.tk" target="_blank">weblog</a>。因wordpress的後臺RTF編輯器到底沒有用vim寫起來快，所以即便wordpress功能強大，也不怎麼吸引我了。</p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/IT/">IT</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/latex/">latex</a>, <a href="/tags/notes/">notes</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://npuwb.github.com/2014/08/30/xelatex_notes1/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:npuwb.github.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分類</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/IT/">IT</a><small>2</small></li>
+  
+    <li><a href="/categories/讀書/">讀書</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">標籤雲</h3>
+  <div class="entry">
+    <a href="/tags/latex/" style="font-size: 20.00px;">latex</a><a href="/tags/notes/" style="font-size: 10.00px;">notes</a><a href="/tags/書單/" style="font-size: 10.00px;">書單</a><a href="/tags/讀書/" style="font-size: 10.00px;">讀書</a>
+  </div>
+</div>
+
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新發佈</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/08/30/xelatex_notes1/">XeLaTeX備忘錄</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/10/about_latex&amp;code/">hexo中$\LaTeX$公式及代碼插入實現</a>
+      </li>
+    
+      <li>
+        <a href="/2013/08/04/bestsellers_of_last_century_in_china/">1990~1999：百年暢銷書書單</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 止水
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
