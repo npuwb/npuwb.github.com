@@ -294,11 +294,13 @@ article .entry .video-container {
 article .entry blockquote {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  font-style: italic;
+  border: 1px solid #ddd
+  background: #e0eeee
+  font-style: normal;
   font-family: "Georgia", serif;
   font-size: 1.2em;
   padding: 0 30px 15px;
-  text-align: center;
+  text-align: left;
 }
 article .entry blockquote footer {
   border-top: none;
