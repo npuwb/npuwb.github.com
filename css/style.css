@@ -292,8 +292,8 @@ article .entry .video-container {
   margin-top: 15px;
 }
 article .entry blockquote {
-  #border-top: 1px solid #ddd;
-  #border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   border: 1px solid #ddd
   background: #e0eeee
   font-style: normal;
